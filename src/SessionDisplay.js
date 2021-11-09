@@ -2,7 +2,8 @@ import React from "react";
 
 function SessionDisplay({secondsToDuration, session, focusDuration, breakDuration}) {
     return (
-        <>
+       (session ? 
+       <>
         <div className="row mb-2">
           <div className="col">
             {/* TODO: Update message below to include current session (Focusing or On Break) total duration */}
@@ -29,7 +30,8 @@ function SessionDisplay({secondsToDuration, session, focusDuration, breakDuratio
             </div>
           </div>
         </div>
-        </>
+        </> 
+        : null)
     );
 };
 

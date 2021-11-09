@@ -108,8 +108,6 @@ function Pomodoro() {
     });
   }
 
-  console.log(session?.percentComplete);
-
   return (
     <div className="pomodoro">
       <SetDuration
@@ -128,14 +126,12 @@ function Pomodoro() {
         setSession={setSession}
       />
       <div>
-        {session ? (
           <SessionDisplay
             secondsToDuration={secondsToDuration}
             session={session}
             focusDuration={focusDuration}
             breakDuration={breakDuration}
           />
-        ) : null}
       </div>
     </div>
   );
