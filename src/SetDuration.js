@@ -1,6 +1,33 @@
 import React from "react";
 
 function SetDuration({session, focusDuration, setFocusDuration, breakDuration, setBreakDuration}) {
+   function decreaseFocus(previousFocusDuration) {
+    if (previousFocusDuration > 5) {
+      previousFocusDuration -= 5;
+    }
+    return previousFocusDuration;
+   };
+
+   function increaseFocus(previousFocusDuration) {
+     if (previousFocusDuration < 60) {
+       previousFocusDuration += 5;
+     }
+     return previousFocusDuration;
+   }
+
+   function decreaseBreak(previousBreakDuration) {
+     if (previousBreakDuration > 1) {
+       previousBreakDuration -= 1;
+     }
+     return previousBreakDuration;
+   }
+
+   function increaseBreak(previousBreakDuration) {
+     if (previousBreakDuration < 15) {
+       previousBreakDuration += 1;
+     }
+     return previousBreakDuration;
+   }
 
     return (
         <div className="row">
@@ -13,7 +40,7 @@ function SetDuration({session, focusDuration, setFocusDuration, breakDuration, s
             <div className="input-group-append">
               {/* TODO: Implement decreasing focus duration and disable during a focus or break session */}
               <button
-                onClick={() => {setFocusDuration(focusDuration <= 5 ? 5 : focusDuration > 60 ? 60 : focusDuration - 5)}}
+                onClick={() => {setFocusDuration(decreaseFocus)}}
                 disabled={session}
                 type="button"
                 className="btn btn-secondary"
@@ -23,7 +50,7 @@ function SetDuration({session, focusDuration, setFocusDuration, breakDuration, s
               </button>
               {/* TODO: Implement increasing focus duration  and disable during a focus or break session */}
               <button
-                onClick={() => {setFocusDuration(focusDuration < 5 ? 5 : focusDuration >= 60 ? 60 : focusDuration + 5)}}
+                onClick={() => {setFocusDuration(increaseFocus)}}
                 disabled={session}
                 type="button"
                 className="btn btn-secondary"
@@ -44,7 +71,7 @@ function SetDuration({session, focusDuration, setFocusDuration, breakDuration, s
               <div className="input-group-append">
                 {/* TODO: Implement decreasing break duration and disable during a focus or break session*/}
                 <button
-                  onClick={() => {setBreakDuration(breakDuration <= 1 ? 1 : breakDuration > 15 ? 15 : breakDuration - 1)}}
+                  onClick={() => {setBreakDuration(decreaseBreak)}}
                   disabled={session}
                   type="button"
                   className="btn btn-secondary"
@@ -54,7 +81,7 @@ function SetDuration({session, focusDuration, setFocusDuration, breakDuration, s
                 </button>
                 {/* TODO: Implement increasing break duration and disable during a focus or break session*/}
                 <button
-                  onClick={() => {setBreakDuration(breakDuration < 1 ? 1 : breakDuration >= 15 ? 15 : breakDuration + 1)}}
+                  onClick={() => {setBreakDuration(increaseBreak)}}
                   disabled={session}
                   type="button"
                   className="btn btn-secondary"
